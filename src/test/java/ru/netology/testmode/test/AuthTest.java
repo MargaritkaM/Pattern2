@@ -29,7 +29,7 @@ class AuthTest {
         $("[data-test-id='password']").setValue(registeredUser.getPassword());
         $("[data-test-id='action-login']").click();
 
-
+    }
     @Test
     @DisplayName("Should get error message if login with not registered user")
     void shouldGetErrorIfNotRegisteredUser() {
