@@ -1,12 +1,10 @@
 package ru.netology.testmode.test;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static ru.netology.testmode.data.DataGenerator.Registration.getRegisteredUser;
 import static ru.netology.testmode.data.DataGenerator.Registration.getUser;
@@ -26,7 +24,7 @@ class AuthTest {
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
             var registeredUser = getRegisteredUser("active");
             $("[data-test-id='login'] input.input__control").setValue(registeredUser.getLogin());
-            $("[data-test-id='password']").setValue(registeredUser.getPassword());
+            $("[data-test-id='password'] input.input__control").setValue(registeredUser.getPassword());
             $("[data-test-id='action-login']").click();
 
     }
@@ -58,7 +56,7 @@ class AuthTest {
 
     @Test
     @DisplayName("Should get error message if login with wrong password")
-    void shouldGetErrorIfWrongPassword() {
+    static void shouldGetErrorIfWrongPassword() {
         var registeredUser = getRegisteredUser("active");
         var wrongPassword = getRandomPassword();
         // TODO: добавить логику теста в рамках которого будет выполнена попытка входа в личный кабинет с неверным
